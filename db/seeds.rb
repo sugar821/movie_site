@@ -35,7 +35,7 @@ names = [
   ["Rachel Meghan Markle","レイチェル・メーガン・マークル"],
 ]
 names.each do |us,jp|
-  Name.create(name_us: us ,name_jp: jp)
+  Person.create(name_us: us ,name_jp: jp)
 end  
 
 #set era

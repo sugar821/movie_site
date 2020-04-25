@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module MovieSite
   class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
+    config.generators.template_engine = :slim
     config.load_defaults 5.2
 
     config.generators do |g|

@@ -1,0 +1,26 @@
+div.col-12
+  = form_for @drama do |f|
+      .field
+        = f.label :title
+        = f.text_field :title, class: "form-control",placeholder: "タイトルを入力して下さい", autofocus: true
+      .field
+        = f.label :releae_date
+        = f.date_field :releae_date, value:Date.today.strftime('%Y-%m-%d') ,class: "form-control"
+      .field
+        =f.label :producer_id
+        =f.collection_select :producer_id, Person.all, :id, :name_us , { include_blank: "" },  { class: "form-control" }
+      .field
+        =f.label :main_cast_id
+        =f.collection_select :main_cast_id, Person.all, :id, :name_us , { include_blank: "" },  { class: "form-control" }
+      .field
+        =f.label :sub_cast_id
+        =f.collection_select :sub_cast_id, Person.all, :id, :name_us , { include_blank: "" },  { class: "form-control" }
+      .field
+        =f.label :set_in_location_id
+        =f.collection_select :set_in_location_id, Location.all, :id, :location , { include_blank: "" },  { class: "form-control" }
+      .field
+        =f.label :set_in_era_id
+        =f.collection_select :set_in_era_id, Era.all, :id, :era , { include_blank: "" },  { class: "form-control" }
+      .actions = f.submit nil , class: "form-control btn btn-outline-primary mt-2"
+      div.my-3
+        = link_to '戻る', :back

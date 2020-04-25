@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :drama do
-    titile { "MyString" }
+    title { "MyString" }
     category { nil }
     producer { nil }
     main_cast { nil }
