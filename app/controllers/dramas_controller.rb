@@ -33,7 +33,7 @@ class DramasController < ApplicationController
 
   private
     def drama_params
-      params.require(:drama).permit(:title, :releae_date, :producer_id, :main_cast_id, :sub_cast_id, :set_in_location_id, :set_in_era_id )
+      params.require(:drama).permit(:title, :category_id, :releae_date, :producer_id, :main_cast_id, :sub_cast_id, :set_in_location_id, :set_in_era_id )
     end
 end
 

@@ -4,6 +4,9 @@ div.col-12
         = f.label :title
         = f.text_field :title, class: "form-control",placeholder: "タイトルを入力して下さい", autofocus: true
       .field
+        =f.label :category_id
+        =f.collection_select :category_id, Category.all, :id, :category , { include_blank: "" },  { class: "form-control" }
+      .field
         = f.label :releae_date
         = f.date_field :releae_date, value:Date.today.strftime('%Y-%m-%d') ,class: "form-control"
       .field
