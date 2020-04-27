@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_22_011822) do
+ActiveRecord::Schema.define(version: 2020_04_22_110043) do
+
+  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "category", null: false
@@ -19,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_04_22_011822) do
   end
 
   create_table "dramas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "titile", null: false
+    t.string "title", null: false
     t.bigint "category_id", null: false
     t.bigint "producer_id"
     t.bigint "main_cast_id", null: false
@@ -49,17 +70,19 @@ ActiveRecord::Schema.define(version: 2020_04_22_011822) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "names", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name_us", null: false
-    t.string "name_jp", null: false
+  create_table "people", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name_us"
+    t.string "name_jp"
+    t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "dramas", "categories"
   add_foreign_key "dramas", "eras", column: "set_in_era_id"
   add_foreign_key "dramas", "locations", column: "set_in_location_id"
-  add_foreign_key "dramas", "names", column: "main_cast_id"
-  add_foreign_key "dramas", "names", column: "producer_id"
-  add_foreign_key "dramas", "names", column: "sub_cast_id"
+  add_foreign_key "dramas", "people", column: "main_cast_id"
+  add_foreign_key "dramas", "people", column: "producer_id"
+  add_foreign_key "dramas", "people", column: "sub_cast_id"
 end

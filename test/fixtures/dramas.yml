@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  titile: MyString
+  title: MyString
   category: one
   producer: one
   main_cast: one
@@ -11,7 +11,7 @@ one:
   set_in_era: one
 
 two:
-  titile: MyString
+  title: MyString
   category: two
   producer: two
   main_cast: two

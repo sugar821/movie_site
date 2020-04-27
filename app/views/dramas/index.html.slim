@@ -1,0 +1,33 @@
+h1 Dramas#index
+div
+  table.table-striped.table-bordered
+    thead
+      tr
+        th name_us
+        th name_jp
+    tbody
+      - @people.each do |person|
+        tr
+          td = person.name_us
+          td = person.name_jp
+hr
+div.mt-2
+  table.table-striped.table-bordered
+    thead
+      tr
+          th releae_date
+          th producer_id
+          th main_cast_id
+          th sub_cast_id
+          th set_in_location_id
+          th set_in_era_ids
+    tbody
+      - @dramas.each do |drama|
+        tr
+          td = drama&.title
+          td = drama&.releae_date
+          td = drama&.producer_id
+          td = drama&.main_cast_id
+          td = drama&.sub_cast_id
+          td = drama&.set_in_location_id
+          td = drama&.set_in_era_id
