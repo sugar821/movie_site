@@ -5,6 +5,7 @@ div.mt-2
     thead
       tr
           th title
+          th original_title
           th releae_date
           th producer_id
           th main_cast_id
@@ -16,6 +17,7 @@ div.mt-2
       - @dramas.each do |drama|
         tr
           td = drama&.title
+          td = drama.title_orig.nil? ? drama&.title : drama&.title_orig
           td = drama&.releae_date
           td = drama&.producer_id
           td = drama&.main_cast_id
