@@ -8,7 +8,6 @@ class DramasController < ApplicationController
   def index
     @dramas = Drama.all
     @people = Person.all
-    @drama_tag = DramasTag.all
   end
 
   def show
