@@ -1,26 +1,17 @@
 h1 Dramas#index
-div
-  table.table-striped.table-bordered
-    thead
-      tr
-        th name_us
-        th name_jp
-    tbody
-      - @people.each do |person|
-        tr
-          td = person.name_us
-          td = person.name_jp
-hr
+最終的にはカードにするのでtagの所は許容する
 div.mt-2
   table.table-striped.table-bordered
     thead
       tr
+          th title
           th releae_date
           th producer_id
           th main_cast_id
           th sub_cast_id
           th set_in_location_id
           th set_in_era_ids
+          th tag
     tbody
       - @dramas.each do |drama|
         tr
@@ -31,3 +22,5 @@ div.mt-2
           td = drama&.sub_cast_id
           td = drama&.set_in_location_id
           td = drama&.set_in_era_id
+          - my_tag(drama.id).each do |drama_tag_table|
+              td = drama_tag_table.tag.tag

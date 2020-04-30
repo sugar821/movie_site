@@ -20,7 +20,9 @@ gem 'font-awesome-sass', '~> 5.4.1'
 gem 'mini_magick'
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # gem 'byebug', '~> 9.0', '>= 9.0.5'
+  gem 'pry-byebug', '~> 1.3', '>= 1.3.1'
+  # gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem "rspec-rails"
   gem 'spring-commands-rspec'
   gem "factory_bot_rails"
