@@ -51,3 +51,19 @@ locations = %w(北米 南米 アフリカ アジア ヨーロッパ オセアニ
 locations.each do |location|
   Location.create(location: location)
 end  
+
+#set tag
+tags = %w(女性に人気 男性に人気 気骨がある アクション豊富 家族向け 子供向け 頭脳派 スタイリッシュ 泥臭い)
+tags.each do |tag|
+  Tag.create(tag: tag)
+end
+
+#dramas_tags
+dt = [
+  [1,2],
+  [1,3],
+  [2,1],
+  ]
+dt.each do |d,t|
+  DramasTag.create(drama_id: d ,tag_id: t)
+end  

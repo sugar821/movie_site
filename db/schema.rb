@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_22_110043) do
+ActiveRecord::Schema.define(version: 2020_04_29_130830) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -58,6 +58,15 @@ ActiveRecord::Schema.define(version: 2020_04_22_110043) do
     t.index ["sub_cast_id"], name: "index_dramas_on_sub_cast_id"
   end
 
+  create_table "dramas_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "drama_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["drama_id"], name: "index_dramas_tags_on_drama_id"
+    t.index ["tag_id"], name: "index_dramas_tags_on_tag_id"
+  end
+
   create_table "eras", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "era", null: false
     t.datetime "created_at", null: false
@@ -78,6 +87,12 @@ ActiveRecord::Schema.define(version: 2020_04_22_110043) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "tag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "dramas", "categories"
   add_foreign_key "dramas", "eras", column: "set_in_era_id"
@@ -85,4 +100,6 @@ ActiveRecord::Schema.define(version: 2020_04_22_110043) do
   add_foreign_key "dramas", "people", column: "main_cast_id"
   add_foreign_key "dramas", "people", column: "producer_id"
   add_foreign_key "dramas", "people", column: "sub_cast_id"
+  add_foreign_key "dramas_tags", "dramas"
+  add_foreign_key "dramas_tags", "tags"
 end

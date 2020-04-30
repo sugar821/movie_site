@@ -1,4 +1,10 @@
 class DramasController < ApplicationController
+  helper_method :my_tag
+
+  def my_tag(drama_id)
+    DramasTag.where(drama_id: drama_id)
+  end
+
   def index
     @dramas = Drama.all
     @people = Person.all
